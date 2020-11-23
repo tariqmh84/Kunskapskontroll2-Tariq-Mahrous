@@ -119,7 +119,7 @@ function getWeatherStatus(e) {
 
             // Changing light or dark bg based on day and night time
             let currentHour = d.getUTCHours(formatedcurrTime);
-            if (currentHour >= 7 && currentHour < 19) {
+            if (currentHour >= 7 && currentHour < 18) {
                 appWrapper.classList.remove('appWrapperNight');
                 appWrapper.classList.add('appWrapperDay');
             } else {
