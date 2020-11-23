@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 1rem 0 1.5rem;
+}
+
+body {
+    background: rgb(183, 190, 196);
+    background-size: cover;
+}
+
+.appWrapper {
+    height: 100vh;
+    width: 100vw;
+    padding: 1.4rem 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.flexing {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+}
+
+.infoBox {
+    transition: background 3s linear;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.weatherForm button {
+    color: #fff;
+    padding: 0 30px;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    transition: all 0.2s;
+    background: #00f260;
+    background: -webkit-linear-gradient(to right, #00f260, #0575e6);
+    background: linear-gradient(to right, #00f260, #0575e6);
+}
+
+.weatherForm {
+    display: flex;
+    z-index: 10;
+    position: relative;
+    width: 500px;
+    box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.weatherForm>* {
+    border: 0;
+    padding: 0 0 0 10px;
+    background: #fff;
+    line-height: 50px;
+    font-size: 1rem;
+    border-radius: 0;
+    outline: 0;
+    -webkit-appearance: none;
+}
+
+input[type="search"] {
+    flex-basis: 500px;
+}
+
+
+/* Change Autocomplete background in Chrome*/
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.weather_List {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    width: 70%;
+}
+
+.weather_List li {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+.weather_List li:first-child {
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+.errMessage {
+    height: 2rem;
+    color: #e92a2a;
+}
+
+.defult {
+    transition: background 10s ease-out;
+}
+
+.cloudy {
+    background: url('../img/cloudy.jpg') rgba(183, 190, 196, 1) no-repeat center center;
+    background-size: cover;
+}
+
+.rainy {
+    background: url('../img/rain.jpg') rgba(183, 190, 196, 1) no-repeat center center;
+    background-size: cover;
+}
+
+.mist {
+    background: url('../img/mist.jpg') rgba(183, 190, 196, 1) no-repeat center center;
+    background-size: cover;
+}
+
+.clear {
+    background: url('../img/clear.jpg') rgba(183, 190, 196, 1) no-repeat center center;
+    background-size: cover;
+}
+
+.snow {
+    background: url('../img/snow.jpg') rgba(183, 190, 196, 1) no-repeat center center;
+    background-size: cover;
+}
+
+.fewCloud {
+    background: url('../img/fewCloud.jpg') rgba(183, 190, 196, 1) no-repeat center center;
+    background-size: cover;
+}
+
+.thunderstorm {
+    background: url('../img/thunderstorm.jpg') rgba(183, 190, 196, 1) no-repeat center center;
+    background-size: cover;
+}
+
+.temp {
+    background: rgba(10, 140, 226, 0.5)
+}
+
+.freeze {
+    background: rgba(11, 52, 235, 0.5);
+}
+
+.cold {
+    background: rgba(10, 140, 226, 0.5)
+}
+
+.moderate {
+    background: rgba(0, 255, 64, 0.5)
+}
+
+.hot {
+    background: rgba(255, 74, 2, 0.5)
+}
+
+.veryHot {
+    background: rgba(255, 0, 0, 0.5)
+}

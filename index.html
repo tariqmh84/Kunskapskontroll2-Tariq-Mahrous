@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/105fd54b42.js" crossorigin="anonymous"></script>
+</head>
+
+<body class="defult bg">
+    <div class="appWrapper flexing">
+        <h1>Discover the weather.</h1>
+        <h3 class="errMessage"></h3>
+        <form id="weatherForm" class="weatherForm">
+            <label for="from">
+                <i class="fas fa-map-marker-alt"></i>
+              </label>
+            <input id="city" type="search" value="" placeholder="Enter a city">
+            <button id="getWeather" type="submit">Search</button>
+        </form>
+        <div class="infoBox flexing temp">
+            <ul id="weather_List" class="weather_List"></ul>
+        </div>
+    </div>
+    <script src="js/weather.js"></script>
+</body>
+
+</html>
