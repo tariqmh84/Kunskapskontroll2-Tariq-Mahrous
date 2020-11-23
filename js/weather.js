@@ -113,11 +113,12 @@ function getWeatherStatus(e) {
 
             // Formating date and time and adding them to the list 
             let d = new Date(data.dt * 1000 + (data.timezone * 1000));
-            let currTime = d.toUTCString().replace(/(.*)\D\d+/, '$1');
-            infoWrapperChildern[4].innerText = currTime;
+            let currTime = d.toUTCString();
+            let formatedcurrTime = currTime.substring(0, currTime.length - 7);
+            infoWrapperChildern[4].innerText = formatedcurrTime;
 
             // Changing light or dark bg based on day and night time
-            let currentHour = d.getUTCHours(currTime);
+            let currentHour = d.getUTCHours(formatedcurrTime);
             if (currentHour >= 7 && currentHour < 19) {
                 appWrapper.classList.remove('appWrapperNight');
                 appWrapper.classList.add('appWrapperDay');
