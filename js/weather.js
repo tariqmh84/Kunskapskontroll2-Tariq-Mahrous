@@ -1,4 +1,3 @@
-// define variable of the used Dom Element
 let form = document.querySelector('#weatherForm');
 let input = document.querySelector('#city');
 let btn = document.querySelector('#getWeather');
@@ -6,30 +5,24 @@ let appWrapper = document.querySelector('.appWrapper');
 let infoWrapper = document.querySelector('#weather_List');
 let bodyClass = document.body.classList;
 let temperatureBg = document.querySelector('.infoBox').classList;
-let message = document.querySelector(".errMessage");
 
-// Add submit Event listener 
 form.addEventListener('submit', getWeatherStatus);
 
-// Listener function
+
 function getWeatherStatus(e) {
 
     e.preventDefault();
     let userInputValue = input.value;
     let apiKey = '1515797dfce7afde18a51bb57569cd2d';
     let weatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${userInputValue}&units=metric&appid=${apiKey}`;
-
-    //empty the the error message
+    let message = document.querySelector(".errMessage");
     message.innerHTML = '';
 
-    //Select weather info wrapper childern elements
+    //Select weather info wrapper
     let infoWrapperChildern = infoWrapper.children;
 
-
-    // fetching the the data from API URL
     fetch(weatherUrl)
         .then(response => {
-            // Handling the errors: empty input or unvalid city
             if (response.status >= 200 && response.status <= 299) {
                 return response.json();
             } else {
@@ -40,7 +33,7 @@ function getWeatherStatus(e) {
                 };
             }
         }).then(data => {
-            //Add list elements to the Dom to put the fetched data in
+            //Add list elements
             if (!infoWrapper.hasChildNodes()) {
                 for (let i = 0; i < 6; i++) {
                     let list = document.createElement('li');
@@ -48,14 +41,13 @@ function getWeatherStatus(e) {
                 }
             }
 
-            //Get weather status icon and add it to the list
+            //Add weather icon to the list
             let imgIcon = document.createElement('img');
             infoWrapperChildern[1].appendChild(imgIcon);
             let icon = data.weather[0].icon;
             let iconUrl = `http://openweathermap.org/img/wn/${icon}@2x.png`;
             infoWrapperChildern[1].firstChild.src = iconUrl;
 
-            // Change the background according to the wrather status by changing the class attribute
             switch (icon) {
                 case '03d':
                 case '03n':
@@ -93,11 +85,9 @@ function getWeatherStatus(e) {
                     document.body.style.background = 'rgb(183, 190, 196)';
             }
 
-            //Get weather temperature and add it to the list
+            //Add weather temperature to the list
             let temperature = Math.round(data.main.temp);
             infoWrapperChildern[0].innerHTML = `${temperature}° C`;
-
-            // change the background of the result info according to the temperature: higher temperature => more red color, less blue
             if (temperature <= 5) {
                 temperatureBg.replace(temperatureBg[2], 'freeze');
             } else if (temperature > 5 && temperature <= 12) {
@@ -111,15 +101,32 @@ function getWeatherStatus(e) {
             }
 
 
-            //Get wind speed and weather humidity and add them to the list
+            //Add wind speed and weather humidity to the list
             let humidity = data.main.humidity;
             let windSpeed = data.wind.speed;
             infoWrapperChildern[3].innerText = `Humidity: ${humidity} % \n\n Wind: ${windSpeed} m/s`;
 
-            //Get weather description and the country and add them to the list
+            //Add weather description and the country to the list
             infoWrapperChildern[2].innerText = `${(data.weather[0].description).charAt(0).toUpperCase()+(data.weather[0].description).slice(1)} \n\n ${(data.name).charAt(0).toUpperCase()+(data.name).slice(1)} - ${(data.sys.country).toUpperCase()}`;
 
-            //Catching errors and printed to the user 
+
+
+            // Formating date and time and adding them to the list 
+            let d = new Date(data.dt * 1000 + (data.timezone * 1000));
+            let currTime = d.toUTCString().replace(/(.*)\D\d+/, '$1');
+            infoWrapperChildern[4].innerText = currTime;
+
+            // Changing light or dark bg based on day and night time
+            let currentHour = d.getUTCHours(currTime);
+            if (currentHour >= 7 && currentHour < 19) {
+                appWrapper.classList.remove('appWrapperNight');
+                appWrapper.classList.add('appWrapperDay');
+            } else {
+                appWrapper.classList.remove('appWrapperDay');
+                appWrapper.classList.add('appWrapperNight');
+            }
+
+
         }).catch(err => {
             message.innerHTML = err;
             infoWrapper.innerHTML = '';
