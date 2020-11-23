@@ -14,3 +14,5 @@ Application features:
     
     - The icon of the weather status will change according to the description based on icons of the API.
 
+    - Changing light or dark bg based on day and night time
+
