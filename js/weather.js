@@ -6,14 +6,17 @@ let infoWrapper = document.querySelector('#weather_List');
 let bodyClass = document.body.classList;
 let temperatureBg = document.querySelector('.infoBox').classList;
 
+// API Key
+let apiKey = '';
+
+// Create Event Listener to submit the user input 
 form.addEventListener('submit', getWeatherStatus);
 
-
+// The Listener
 function getWeatherStatus(e) {
 
     e.preventDefault();
     let userInputValue = input.value;
-    let apiKey = '';
     let weatherUrl = `http://api.openweathermap.org/data/2.5/weather?q=${userInputValue}&units=metric&appid=${apiKey}`;
     let message = document.querySelector(".errMessage");
     message.innerHTML = '';
