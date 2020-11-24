@@ -2,6 +2,8 @@
 
 Weather Application.
 
+******* PLEASE PUT YOUR API KEY ***********
+
 Get weather info to a specific city. The info data is brought from Openweathermap.org API.
 
 Application features:
