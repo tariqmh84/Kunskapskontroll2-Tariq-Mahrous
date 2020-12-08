@@ -10,7 +10,7 @@ Application features:
 
 - Getting temperature, humidity, wind speed, country shortcut letters and weather status description of a city.
 
-    - The background will change acoording to the weather status description.
+    - The background will change according to the weather status description.
     
     - The temperature degree will turn the data info background from the blue to red depending on the high or low temperature number.
     
