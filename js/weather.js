@@ -136,5 +136,5 @@ function getWeatherStatus(e) {
             infoWrapper.innerHTML = '';
         });
 
-
+//End
 }
